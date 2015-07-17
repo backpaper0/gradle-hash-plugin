@@ -1,13 +1,42 @@
+buildscript {
+    repositories {
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+    dependencies {
+        classpath 'com.gradle.publish:plugin-publish-plugin:0.9.1'
+    }
+}
+
 apply plugin: 'groovy'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'maven'
+apply plugin: 'com.gradle.plugin-publish'
 
 group = 'com.github.backpaper0'
 version = '1.0-SNAPSHOT'
+
+repositories {
+    jcenter()
+}
 
 dependencies {
     compile gradleApi()
     compile localGroovy()
 }
 
+pluginBundle {
+    website = 'https://github.com/backpaper0/gradle-hash-plugin'
+    vcsUrl = 'https://github.com/backpaper0/gradle-hash-plugin'
+    description = 'This plugin save to file that hash value of copied file by processResources task(JavaPlugin).'
+    tags = ['hash']
+
+    plugins {
+        hashPlugin {
+            id = 'com.github.backpaper0.hash'
+            displayName = 'Gradle Hash Plugin'
+        }
+    }
+}
