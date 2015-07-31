@@ -8,27 +8,21 @@ This plugin save to file that hash value
 
 ## Usage
 
-First, install this plugin to maven local repository.
-
-```sh
-git clone https://github.com/backpaper0/gradle-hash-plugin.git gradle-hash-plugin
-cd gradle-hash-plugin
-gradle install
-```
-
-And, edit your project's `build.gradle`.
+Edit your project's `build.gradle`.
 
 ```gradle
 buildscript {
-    repositories {
-        mavenLocal()
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
     }
-    dependencies {
-        classpath 'com.github.backpaper0:gradle-hash-plugin:1.0-SNAPSHOT'
-    }
+  }
+  dependencies {
+    classpath "gradle.plugin.com.github.backpaper0:gradle-hash-plugin:1.0"
+  }
 }
 
-apply plugin: 'com.github.backpaper0.hash'
+apply plugin: "com.github.backpaper0.hash"
 ```
 
 ## License
